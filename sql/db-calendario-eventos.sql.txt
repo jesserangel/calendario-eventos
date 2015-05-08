@@ -1,0 +1,65 @@
+﻿DROP DATABASE IF EXISTS calendario_eventos;
+
+CREATE DATABASE calendario_eventos;
+
+USE calendario_eventos;
+
+CREATE TABLE tbl_usuarios(
+     id_usuario INT(11) AUTO_INCREMENT,
+     nombre_usuario VARCHAR(50) NOT NULL,
+     apellido_usuario VARCHAR(50) NOT NULL,
+     login_usuario VARCHAR(50) NOT NULL,
+     pass_usuario VARCHAR(50) NOT NULL,
+     fechareg_usuario DATE,
+     PRIMARY KEY(id_usuario)
+) ENGINE="InnoDB";
+
+CREATE TABLE tbl_eventos(   
+     id_evento INT(11) AUTO_INCREMENT,
+     titulo_evento VARCHAR(100) NOT NULL,
+     descripcion_evento TEXT NOT NULL,
+     inicio_evento VARCHAR(50) NOT NULL,
+	   foto_evento VARCHAR(100) DEFAULT NULL,
+     fin_evento VARCHAR(50) NOT NULL,
+     fecha_evento DATE,
+     id_usuario INT(11),
+     PRIMARY KEY(id_evento),
+     FOREIGN KEY(id_usuario) REFERENCES tbl_usuarios(id_usuario)
+) ENGINE="InnoDB";
+
+DROP PROCEDURE IF EXISTS listar_eventos;
+DROP PROCEDURE IF EXISTS listar_eventos_pdf;
+DROP PROCEDURE IF EXISTS total_eventos;
+DROP PROCEDURE IF EXISTS listar_eventos_name;
+DROP PROCEDURE IF EXISTS registrar_eventos;
+DROP PROCEDURE IF EXISTS eliminar_eventos;
+DROP PROCEDURE IF EXISTS actualizar_eventos;
+DROP PROCEDURE IF EXISTS registrar_usuarios;
+DROP PROCEDURE IF EXISTS ingreso_usuarios;
+
+CREATE PROCEDURE listar_eventos(IN iduser INT, IN inicio INT)
+       SELECT * FROM tbl_eventos WHERE id_usuario=iduser ORDER BY id_evento DESC LIMIT inicio,10;
+       
+CREATE PROCEDURE listar_eventos_pdf(IN iduser INT)
+       SELECT * FROM tbl_eventos WHERE id_usuario=iduser ORDER BY id_evento DESC;
+       
+CREATE PROCEDURE total_eventos(IN iduser INT)
+       SELECT COUNT(*) AS cantidad FROM tbl_eventos WHERE id_usuario=iduser;
+
+CREATE PROCEDURE listar_eventos_name(IN tit VARCHAR(100))
+       SELECT * FROM tbl_eventos WHERE titulo_evento=tit;
+
+CREATE PROCEDURE registrar_eventos(IN tit VARCHAR(100), IN descrip TEXT, IN ini VARCHAR(50), IN foto VARCHAR(100), IN fin VARCHAR(50), IN iduser INT)
+       INSERT INTO tbl_eventos(id_evento, titulo_evento, descripcion_evento, inicio_evento, foto_evento, fin_evento, fecha_evento, id_usuario) VALUES(NULL, tit, descrip, ini, foto, fin, NOW(), iduser);
+       
+CREATE PROCEDURE eliminar_eventos(IN tit VARCHAR(100))
+       DELETE FROM tbl_eventos WHERE titulo_evento=tit;
+
+CREATE PROCEDURE actualizar_eventos(IN id INT, IN tit VARCHAR(100), IN descrip TEXT, IN ini VARCHAR(50), IN foto VARCHAR(100), IN fin VARCHAR(50))
+       UPDATE tbl_eventos SET titulo_evento=tit, descripcion_evento=descrip, inicio_evento=ini, foto_evento=foto, fin_evento=fin WHERE id_evento=id;
+
+CREATE PROCEDURE registrar_usuarios(IN nom VARCHAR(50), IN ape VARCHAR(50), IN login VARCHAR(50), IN pass VARCHAR(50))
+       INSERT INTO tbl_usuarios(id_usuario, nombre_usuario, apellido_usuario, login_usuario, pass_usuario, fechareg_usuario) VALUES(NULL, nom, ape, login, pass, NOW());
+       
+CREATE PROCEDURE ingreso_usuarios(IN login VARCHAR(50), IN pass VARCHAR(50))
+       SELECT * FROM tbl_usuarios WHERE login_usuario=login AND pass_usuario=pass;

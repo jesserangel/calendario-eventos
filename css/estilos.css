@@ -1,0 +1,175 @@
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: consolas;
+}
+
+body, html{
+    height: 100%;
+}
+
+button, input[type="submit"], .format-button, .format-a, .format-button-search{
+    transition: all .5s ease;
+}
+
+button:hover, input[type="submit"]:hover, .format-button:hover, .format-a:hover, .format-button-search:hover{
+    background: #000;
+    color: #FFF;
+    transition: all .5s ease;
+}
+
+footer{
+    background: #045FB4;
+    color: #fff;
+    margin-top: 1em;
+    padding: 1em;
+    text-align: center;
+}
+
+header{
+    background: #045FB4;
+    color: #fff;
+    margin-bottom: 2em;
+    padding: 1em;
+    text-align: center;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+input[type="text"], input[type="password"], textarea{
+    border: 1px solid #CCC;
+    padding: .20em;
+}
+
+input[type="submit"]{
+    background: #045FB4;
+    color: #FFF;
+    cursor: pointer;
+    font-family: consolas;
+    font-size: 1em;
+    margin: 2em;
+    padding: .50em;
+}
+
+label{
+    margin-left: 5em;
+}
+
+ul{
+    list-style: none;
+}
+
+ul li{
+    background: #045FB4;
+    margin: auto;
+    padding: 1em;
+    width: 90%;
+}
+
+textarea{
+    margin-left: 6em;
+}
+
+#contenedor{
+    border: 1px solid #CCC;
+    margin: auto;
+    width: 960px;
+    min-height: 100%;
+}
+
+#paginador{
+    margin: auto;
+    padding: 1em;
+    text-align: center;
+    width: 60%;
+}
+
+#paginador a, #paginador span{
+    background: #045FB4;
+    color: #FFF;
+    margin-left: 1em;
+    padding: .50em;
+    text-decoration: none;
+}
+
+#paginador a:hover{
+    text-decoration: underline;
+}
+
+#paginador span{
+    color: #777;
+}
+
+.format-a{
+    text-decoration: none;
+}
+
+.format-button, .format-a, .format-button-search{
+    font-family: consolas;
+    font-size: 1em;
+    background: #045FB4;
+    color: #FFF;
+    cursor: pointer;
+    margin: 2em;
+    padding: .50em;
+}
+
+.format-button{
+    font-family: consolas;
+    font-size: 1em;
+    margin-top: 3em;
+}
+
+.format-button-search{
+    padding: .50em;
+}
+
+.format-img{
+    border-radius: .5em;
+    float: right;
+    width: 200px;
+    height: 200px;
+}
+
+.format-p{
+    color: #fff;
+}
+
+.format-span{
+    color: gold;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.github-button img{
+    margin-left: 8em;
+    margin-top: 3em;
+    transition: all .5s ease;
+}
+
+.github-button img:hover{
+    transform: scale(1.1,1.1);
+    transition: all .5s ease;
+}
+
+.margin-class-1{
+    margin-top: .1em;
+}
+
+.twitter-widget{
+    margin-right: 5em;
+    width: 40%;
+}
+
