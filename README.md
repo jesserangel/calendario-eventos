@@ -1,4 +1,4 @@
-Calendario de Eventos
+Calendario de Eventos.
 Versión: 1.0
 
 Descripción
